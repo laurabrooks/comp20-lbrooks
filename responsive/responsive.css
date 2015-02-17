@@ -1,20 +1,84 @@
 /* Stylesheet that controls which picture is displayed depending
    on the browser screen width  */
 
-
 @media only screen and (min-device-width: 1201px) {
 	.software {
 		width: 128px;
 		height: 240px;
-		background: url(software.png) 0 0px;		
+		background: url(software.png) 0 0;
 	}
 }
 
-
-@media only screen and (min-device-width: 1101px) and (max-device-width: 1200) {
+@media only screen and (min-width: 1101px) and (max-width: 1200) {
 	.software {
 		width: 128px;
 		height: 240px;
-		background: url(software.png) 128 0px;		
+		background: url(software.png) 128 0;		
 	}
 }
+
+@media only screen and (min-device-width: 1001px) and (max-device-width: 1100) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 256 0;
+	}
+}
+
+@media only screen and (min-device-width: 901px) and (max-device-width: 1000) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 384 0;
+	}
+}
+
+@media only screen and (min-device-width: 801px) and (max-device-width: 900) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 512 0;		
+	}
+}
+
+/*FIRST IMAGE ON BOTTOM ROW*/
+@media only screen and (min-device-width: 701px) and (max-device-width: 800) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 0 -240;		
+	}
+}
+
+@media only screen and (min-device-width: 601px) and (max-device-width: 700) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 128 -240;		
+	}
+}
+
+@media only screen and (min-device-width: 501px) and (max-device-width: 600) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 256 -240;		
+	}
+}
+
+@media only screen and (min-device-width: 401px) and (max-device-width: 500) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 384 -240;
+	}
+}
+
+@media only screen and (max-device-width: 400) {
+	.software {
+		width: 128px;
+		height: 240px;
+		background: url(software.png) 512 -240;
+	}
+}
+
