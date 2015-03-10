@@ -9,15 +9,13 @@ function parse(){
 
 function parseData(){
 	if (request.readyState == 4 && request.status == 200){
-		converted = JSON.parse(request.responseText);
 		divMessages = document.getElementById("messages");
-
+		converted = JSON.parse(request.responseText);
 		for (i=0; i<converted.length; i++){
-			toAdd = "<p>" + (converted[i]["username"]) + ": " + (converted[i]["content"]) + "</p>" ;
+			toAdd = "<p>" + (converted[i]["username"]) + ": " + (converted[i]["content"] + "</p>" ;
 			divMessages.innerHTML += toAdd;
 		}
 	}
-
 	else if (request.readyState = 4 && request.status != 200){
 		alert("Page did not load");
 	}
