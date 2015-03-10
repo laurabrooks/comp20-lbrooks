@@ -1,11 +1,9 @@
 h1 {
 	font-family: arial;
-	color: #392e73;
 	size: 2em;
 }
 
-div {
+div.messages {
 	font-family: arial;
-	color: #392e73;
 	size: 1em;
 }
