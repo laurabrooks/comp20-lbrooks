@@ -1,1 +1,11 @@
-/* Your CSS here... */
+h1 {
+	font-family: arial;
+	color: #392e73;
+	size: 2em;
+}
+
+div {
+	font-family: arial;
+	color: #392e73;
+	size: 1em;
+}
