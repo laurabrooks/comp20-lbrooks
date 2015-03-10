@@ -7,3 +7,7 @@ div#messages {
 	font-family: arial;
 	size: 1em;
 }
+
+p {
+	background-color: blue;
+}
