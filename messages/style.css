@@ -3,7 +3,7 @@ h1 {
 	size: 2em;
 }
 
-div.messages {
+div#messages {
 	font-family: arial;
 	size: 1em;
 }
