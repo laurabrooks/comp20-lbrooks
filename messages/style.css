@@ -17,4 +17,5 @@ div#messages {
 p {
 	background-color: #bac2f5;
 	border-radius: 3px;
+	padding: 5px;
 }
