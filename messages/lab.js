@@ -12,7 +12,7 @@ function parseData(){
 		divMessages = document.getElementById("messages");
 		converted = JSON.parse(request.responseText);
 		for (i=0; i<converted.length; i++){
-			toAdd = "<p>" + (converted[i]["username"]) + ": " + (converted[i]["content"]) + "</p>" ;
+			toAdd = "<p>" + (converted[i]["content"]) + " -" + (converted[i]["username"]) + "</p>" ;
 			divMessages.innerHTML += toAdd;
 		}
 	}
