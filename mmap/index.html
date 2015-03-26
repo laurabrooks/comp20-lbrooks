@@ -37,13 +37,13 @@
 			});
 		}
 		else {
-			alert("Sorry! Geolocation is not supported in your browser.")
+			alert("Sorry! Geolocation is not supported in your browser.");
 		}
 	}
 
 
 	function renderMap() {
-		console.log("in rederMap");
+		console.log("in renderMap");
 		me = new google.maps.LatLng(myLat, myLng);
 		map.panTo(me);
 		//taken from google developers tutorial
