@@ -52,6 +52,13 @@
 			position: me,
 			map: map,
 			title: "Cheri Vasquez",
+		markerInfo = new google.maps.markerInfo({
+			content: "Cheri Vasquez",
+		});
+		google.maps.event.addListener(myMarker, 'click', function(){
+			infowindow.open(map, myMarker);
+		});
+
 		});
 		myMarker.setMap(map);
 	}
