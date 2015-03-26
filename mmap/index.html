@@ -69,7 +69,9 @@
 
 	request = new XMLHttpRequest();
 	url = "https://secret-about-box.herokuapp.com/sendLocation";
+	console.log("before POST");
 	request.open("POST", url, true);
+	console.log("after POST");
 	request.onreadystate = function(){
 		console.log("inside onreadystate function")
 		if (request.readyState == 4 && request.status == 200){
