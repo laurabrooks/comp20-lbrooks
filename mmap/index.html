@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="mmap_style.css" />
 
 	<script>
+
 	var myLat = 0;
 	var myLng = 0;
 	var request = new XMLHttpRequest();
@@ -65,23 +66,28 @@
 		});
 
 		myMarker.setMap(map);
+
+		getOtherPeople();
 	}
 
-	console.log("before request");
-	request = new XMLHttpRequest();
-	console.log("after request");
-	url = "https://secret-about-box.herokuapp.com/sendLocation";
-	console.log("before POST");
-	request.open("POST", url, true);
-	console.log("after POST");
-	request.onreadystate = function(){
+	function getOtherPeople(){
+		console.log("before request");
+		request = new XMLHttpRequest();
+		console.log("after request");
+		url = "https://secret-about-box.herokuapp.com/sendLocation";
+		console.log("before POST");
+		request.open("POST", url, true);
+		console.log("after POST");
+		request.onreadystate = function(){
 		console.log("inside onreadystate function")
-		if (request.readyState == 4 && request.status == 200){
-			otherPeople = JSON.parse(request.responseText);
-		console.log("Inside if statement inside onreadystate");
+			if (request.readyState == 4 && request.status == 200){
+				otherPeople = JSON.parse(request.responseText);
+			console.log("Inside if statement inside onreadystate");
+			}
 		}
+		request.send();
 	}
-	request.send();
+
 
 	</script>
 </head>
