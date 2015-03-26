@@ -16,5 +16,5 @@ body {
 .marker {
 	height: 50px;
 	width: 50px;
-	border: dotted;
+	border: solid;
 }
