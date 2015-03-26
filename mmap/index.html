@@ -19,6 +19,8 @@
 		center: me,
 		zoom: 15
 	}
+	var pizza = "icon.jpg";
+
 
 	function init() {
 		console.log("in init");
@@ -52,10 +54,11 @@
 			position: me,
 			map: map,
 			title: "Cheri Vasquez",
+			icon: pizza
 		});
 
 		markerInfo = new google.maps.InfoWindow({
-			content: "<p>Cheri Vasquez</p>",
+		content: "<p>Cheri Vasquez</p>",
 		});
 
 		google.maps.event.addListener(myMarker, 'click', function(){
