@@ -67,7 +67,9 @@
 		myMarker.setMap(map);
 	}
 
+	console.log("before request");
 	request = new XMLHttpRequest();
+	console.log("after request");
 	url = "https://secret-about-box.herokuapp.com/sendLocation";
 	console.log("before POST");
 	request.open("POST", url, true);
