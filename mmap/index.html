@@ -45,7 +45,14 @@
 	function renderMap() {
 		console.log("in rederMap");
 		me = new google.maps.LatLng(myLat, myLng);
-		google.maps.event.addDomListener(window, 'load', initialize);
+		map.panTo(me);
+		//taken from google developers tutorial
+		myMarker = new google.maps.Marker({
+			position: me,
+			map: map,
+			title: "Cheri Vasquez"
+		});
+		myMarker.setMap(map);
 	}
 
 	</script>
