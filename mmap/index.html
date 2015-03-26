@@ -27,7 +27,8 @@
 	}
 
 	function getMyLocation() {
-		if (navigator.geolocation) {
+		console.log("in getMyLocation");
+		if (navigator.geolocation) { console.log("in if statement in getMyLocation");
 			navigator.geolocation.getCurrentPosition(function(position) {
 				myLat = position.coords.latitude;
 				myLng = position.coords.longitude;
@@ -41,6 +42,7 @@
 
 
 	function renderMap() {
+		console.log("in rederMap");
 		me = new google.maps.LatLng(myLat, myLng);
 	}
 
