@@ -86,7 +86,7 @@
 		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 		//console.log("after POST");
-		request.onreadystate = function(){
+		request.onreadystatechange = function(){
 		console.log("inside onreadystate function")
 			if (request.readyState == 4 && request.status == 200){
 				otherPeople = JSON.parse(request.responseText);
