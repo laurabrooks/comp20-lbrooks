@@ -24,19 +24,19 @@
 
 
 	function init() {
-		console.log("in init");
+		//console.log("in init");
 		map = new google.maps.Map(document.getElementById("mmap_canvas"), mapOptions);
 		getMyLocation();
 	}
 
 	function getMyLocation() {
-		console.log("in getMyLocation");
+		//console.log("in getMyLocation");
 		if (navigator.geolocation) { 
-			console.log("in if statement in getMyLocation");
+			//console.log("in if statement in getMyLocation");
 			navigator.geolocation.getCurrentPosition(function(position) {
 				myLat = position.coords.latitude;
 				myLng = position.coords.longitude;
-				console.log(myLat, myLng);
+				//console.log(myLat, myLng);
 				renderMap();
 			});
 		}
@@ -47,7 +47,7 @@
 
 
 	function renderMap() {
-		console.log("in renderMap");
+		//console.log("in renderMap");
 		me = new google.maps.LatLng(myLat, myLng);
 		map.panTo(me);
 		//I used this code from google developers tutorial
@@ -92,7 +92,7 @@
 				otherPeople = JSON.parse(request.responseText);
 				//parse(otherPeople);
 				
-			//console.log("Inside if statement inside onreadystate");
+			console.log("Inside if statement inside onreadystate");
 			}
 			else{ console.log("ready state and status were wrong"); }
 		}
