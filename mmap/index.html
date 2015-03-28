@@ -74,8 +74,11 @@
 		//Marcy Regalado helped explain to me how to use HTTP POST to send my data to server
 		param = "login=CheriVasquez&lat=" + myLat + "&lng=" + myLng;
 		//console.log("before request");
-		request = new XMLHttpRequest();
+		
+		//did this up top, think I can delete but should check
+		//request = new XMLHttpRequest();
 		//console.log("after request");
+
 		url = "https://secret-about-box.herokuapp.com/sendLocation";
 		//console.log("before POST");
 		request.open("POST", url, true);
@@ -86,12 +89,20 @@
 		//console.log("inside onreadystate function")
 			if (request.readyState == 4 && request.status == 200){
 				otherPeople = JSON.parse(request.responseText);
+				parse(otherPeople);
 			//console.log("Inside if statement inside onreadystate");
 			}
 		}
 		request.send(param);
+		
+		console.log(otherPeople);
 	}
 
+	function parse(){
+		for (int i=0; i<otherPeople.length; i++){
+			
+		}
+	}
 
 	</script>
 </head>
