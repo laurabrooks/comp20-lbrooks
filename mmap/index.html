@@ -87,7 +87,7 @@
 
 		//console.log("after POST");
 		request.onreadystate = function(){
-		//console.log("inside onreadystate function")
+		console.log("inside onreadystate function")
 			if (request.readyState == 4 && request.status == 200){
 				otherPeople = JSON.parse(request.responseText);
 				//parse(otherPeople);
