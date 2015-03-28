@@ -49,7 +49,7 @@
 		console.log("in renderMap");
 		me = new google.maps.LatLng(myLat, myLng);
 		map.panTo(me);
-		//taken from google developers tutorial
+		//I used this code from google developers tutorial
 		myMarker = new google.maps.Marker({
 			position: me,
 			map: map,
@@ -71,22 +71,25 @@
 	}
 
 	function getOtherPeople(){
-		param = "login=CheriVasquez&lat=myLat&lng=myLng";
-		console.log("before request");
+		//Marcy Regalado helped explain to me how to use HTTP POST to send my data to server
+		param = "login=CheriVasquez&lat=" + myLat + "&lng=" + myLng;
+		//console.log("before request");
 		request = new XMLHttpRequest();
-		console.log("after request");
+		//console.log("after request");
 		url = "https://secret-about-box.herokuapp.com/sendLocation";
-		console.log("before POST");
+		//console.log("before POST");
 		request.open("POST", url, true);
-		console.log("after POST");
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		//console.log("after POST");
 		request.onreadystate = function(){
-		console.log("inside onreadystate function")
+		//console.log("inside onreadystate function")
 			if (request.readyState == 4 && request.status == 200){
 				otherPeople = JSON.parse(request.responseText);
-			console.log("Inside if statement inside onreadystate");
+			//console.log("Inside if statement inside onreadystate");
 			}
 		}
-		request.send();
+		request.send(param);
 	}
 
 
