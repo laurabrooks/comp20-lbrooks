@@ -90,7 +90,7 @@
 		console.log("inside onreadystate function")
 			if (request.readyState == 4 && request.status == 200){
 				otherPeople = JSON.parse(request.responseText);
-				//parse(otherPeople);
+				parse(otherPeople);
 				
 			console.log("Inside if statement inside onreadystate");
 			}
@@ -99,12 +99,13 @@
 		request.send(param);
 	}
 
-	/*function parse(otherPeople){
+	function parse(otherPeople){
 		for (int i=0; i<otherPeople.length; i++){
 			//Inside here I have to create markers for every person
 			//include: name and distance (miles)
+			login = otherPeople[i].login;
 		}
-	}*/
+	}
 
 	</script>
 </head>
