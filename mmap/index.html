@@ -91,6 +91,7 @@
 			if (request.readyState == 4 && request.status == 200){
 				otherPeople = JSON.parse(request.responseText);
 				parse(otherPeople);
+				
 			//console.log("Inside if statement inside onreadystate");
 			}
 		}
@@ -99,7 +100,7 @@
 
 	function parse(otherPeople){
 		for (int i=0; i<otherPeople.length; i++){
-			
+			console.log("inforloop");
 		}
 	}
 
