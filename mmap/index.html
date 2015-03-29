@@ -23,34 +23,32 @@
 	var otherPeople;
 
 
-	function init() {
-		//console.log("in init");
+	function init() {	
 		map = new google.maps.Map(document.getElementById("mmap_canvas"), mapOptions);
 		getMyLocation();
 	}
 
 	function getMyLocation() {
-		//console.log("in getMyLocation");
 		if (navigator.geolocation) { 
-			//console.log("in if statement in getMyLocation");
 			navigator.geolocation.getCurrentPosition(function(position) {
 				myLat = position.coords.latitude;
 				myLng = position.coords.longitude;
-				//console.log(myLat, myLng);
 				renderMap();
 			});
 		}
+
 		else {
 			alert("Sorry! Geolocation is not supported in your browser.");
 		}
 	}
 
 
+	//this code is based on the code in the google developers tutorial for the maps API
 	function renderMap() {
-		//console.log("in renderMap");
+		
 		me = new google.maps.LatLng(myLat, myLng);
 		map.panTo(me);
-		//I used this code from google developers tutorial
+
 		myMarker = new google.maps.Marker({
 			position: me,
 			map: map,
@@ -74,40 +72,54 @@
 	function getOtherPeople(){
 		//Marcy Regalado explained to me how to use parameters for request.send
 		param = "login=CheriVasquez&lat=" + myLat + "&lng=" + myLng;
-		//console.log("before request");
 		
 		url = "https://secret-about-box.herokuapp.com/sendLocation";
-		//console.log("before POST");
 		request.open("POST", url, true);
 		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 		request.onreadystatechange = function(){
-		console.log("inside onreadystate function")
 			if (request.readyState == 4 && request.status == 200){
 				otherPeople = JSON.parse(request.responseText);
 				parse(otherPeople);
-				
-			console.log("Inside if statement inside onreadystate");
 			}
 		}
+
 		request.send(param);
 	}
 
 	function parse(otherPeople){
-		for (i=0; i<otherPeople.length; i++){
-			//Inside here I have to create markers for every person
-			//include: name and distance (miles)
+
+		for (i = 0; i < otherPeople.length; i++){
 			if (otherPeople[i].login != "CheriVasquez"){
+
 				theirLat = otherPeople[i].lat;
 				theirLng = otherPeople[i].lng;
 				theirLogin = otherPeople[i].login;
+				
+				theirMarkers(theirLat, theirLng, theirLogin);
 			}
 		}
 	}
 
-	/*function theirMarkers(){
-		position
-	}*/
+	function theirMarkers(theirLat, theirLng, theirLogin){
+		pos = new google.maps.LatLng(theirLat, theirLng);
+
+		marker = new google.maps.Marker ({
+			position: pos,
+			map: map,
+			title: theirLogin;
+		});
+
+		theirMarkerInfo = new google.maps.InfoWindow({
+			content: "<p>" + theirLogin + "</p>" //HAVE TO ALSO INCLUDE DISTANCE
+		});
+
+		google.maps.event.addEventListener(marker, 'click', function(){
+			theirMarkerInfo.open(map, marker);
+		});
+		
+		marker.setMap(map);
+	}
 
 	</script>
 </head>
