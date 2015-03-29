@@ -97,11 +97,17 @@
 		for (i=0; i<otherPeople.length; i++){
 			//Inside here I have to create markers for every person
 			//include: name and distance (miles)
-			if (otherPeople[i].login == "CheriVasquez"){
-				console.log("FOUnd me");
+			if (otherPeople[i].login != "CheriVasquez"){
+				theirLat = otherPeople[i].lat;
+				theirLng = otherPeople[i].lng;
+				theirLogin = otherPeople[i].login;i
 			}
 		}
 	}
+
+	/*function theirMarkers(){
+		position
+	}*/
 
 	</script>
 </head>
