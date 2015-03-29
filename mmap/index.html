@@ -109,20 +109,47 @@
 			title: theirLogin,
 		});
 
-		console.log(theirLogin);
-
 		theirMarkerInfo = new google.maps.InfoWindow();
-
+		
+		//Lucy Qin helped me with this code so that the info 
+		//window would be for the correct marker
 		google.maps.event.addListener(marker, 'click', function(marker, theirLogin, theirMarkerInfo){
-		//	theirMarkerInfo.setContent(theirLogin);
+
 			return function() {
 				theirMarkerInfo.setContent(theirLogin + " ");
 				theirMarkerInfo.open(map, marker);
 			};
-		//	theirMarkerInfo.setPosition(this.pos);
-		//	theirMarkerInfo.open(map, this.marker);
+
 		}(marker, theirLogin, theirMarkerInfo));
 	}
+
+
+
+
+
+
+
+
+function haversine(){
+	
+	Number.prototype.toRad = function() {
+   		return this * Math.PI / 180;
+	}
+
+	var R = 6371000; // metres
+	var φ1 = lat1.toRadians();
+	var φ2 = lat2.toRadians();
+	var Δφ = (lat2-lat1).toRadians();
+	var Δλ = (lon2-lon1).toRadians();
+	
+	var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+        	Math.cos(φ1) * Math.cos(φ2) *
+     	   	Math.sin(Δλ/2) * Math.sin(Δλ/2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+	var d = R * c;
+}
+
 
 	</script>
 </head>
