@@ -118,7 +118,7 @@
 			return function() {
 				distance = haversine(myLat, myLng, theirLat, theirLng);
 				console.log(myLat + "   " +myLng +"   "+ theirLat + "   " + theirLng + "   " + distance); 
-				theirMarkerInfo.setContent(theirLogin + " ");
+				theirMarkerInfo.setContent(theirLogin + " " + distance);
 				theirMarkerInfo.open(map, marker);
 			};
 
@@ -127,8 +127,9 @@
 
 
 	//code from http://www.movable-type.co.uk/scripts/latlong.html
-	function haversine(lat1, lon1, lat2, lon2){
-	
+	//edited to return miles
+	function haversine(lat1, lon1, lat2, lon2){	
+
 		Number.prototype.toRadians = function() {
    			return this * Math.PI / 180;
 		}
@@ -145,6 +146,8 @@
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 		var d = R * c;
+
+		return d * 0.621371; //I added this line to convert km to miles
 	}
 
 
