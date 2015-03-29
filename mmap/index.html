@@ -76,10 +76,6 @@
 		param = "login=CheriVasquez&lat=" + myLat + "&lng=" + myLng;
 		//console.log("before request");
 		
-		//did this up top, think I can delete but should check
-		//request = new XMLHttpRequest();
-		//console.log("after request");
-
 		url = "https://secret-about-box.herokuapp.com/sendLocation";
 		//console.log("before POST");
 		request.open("POST", url, true);
@@ -101,7 +97,9 @@
 		for (i=0; i<otherPeople.length; i++){
 			//Inside here I have to create markers for every person
 			//include: name and distance (miles)
-			login = otherPeople[i].login;
+			if (otherPeople[i].login == CheriVasquez){
+				console.log("FOUnd me");
+			}
 		}
 	}
 
