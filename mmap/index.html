@@ -117,6 +117,7 @@
 
 			return function() {
 				distance = haversine(myLat, myLng, theirLat, theirLng);
+				Math.round(distance);
 				console.log(myLat + "   " +myLng +"   "+ theirLat + "   " + theirLng + "   " + distance); 
 				theirMarkerInfo.setContent(theirLogin + " " + distance);
 				theirMarkerInfo.open(map, marker);
