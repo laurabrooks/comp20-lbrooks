@@ -85,7 +85,6 @@
 		request.open("POST", url, true);
 		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-		//console.log("after POST");
 		request.onreadystatechange = function(){
 		console.log("inside onreadystate function")
 			if (request.readyState == 4 && request.status == 200){
@@ -94,7 +93,6 @@
 				
 			console.log("Inside if statement inside onreadystate");
 			}
-			else{ console.log("ready state and status were wrong"); }
 		}
 		request.send(param);
 	}
