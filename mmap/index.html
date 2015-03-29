@@ -64,7 +64,7 @@
 			markerInfo.open(map, myMarker);
 		});
 
-		myMarker.setMap(map);
+		//myMarker.setMap(map);
 
 		getOtherPeople();
 	}
@@ -116,7 +116,7 @@
 			content: "<p>" + theirLogin + "</p>" //HAVE TO ALSO INCLUDE DISTANCE
 		});
 
-		google.maps.event.addEventListener(marker, 'click', function(){
+		google.maps.event.addListener(marker, 'click', function(){
 			theirMarkerInfo.open(map, marker);
 		});
 		
