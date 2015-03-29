@@ -89,13 +89,14 @@
 
 	function parse(otherPeople){
 
+
 		for (i = 0; i < otherPeople.length; i++){
+			console.log("i: " + i);
 			if (otherPeople[i].login != "CheriVasquez"){
 
 				theirLat = otherPeople[i].lat;
 				theirLng = otherPeople[i].lng;
 				theirLogin = otherPeople[i].login;
-				
 				theirMarkers(theirLat, theirLng, theirLogin);
 			}
 		}
@@ -104,13 +105,14 @@
 	function theirMarkers(theirLat, theirLng, theirLogin){
 		pos = new google.maps.LatLng(theirLat, theirLng);
 
+
 		marker = new google.maps.Marker ({
 			position: pos,
 			map: map,
 			title: theirLogin,
 		});
 
-		theirMarkerInfo = new google.maps.InfoWindow({
+	/*	theirMarkerInfo = new google.maps.InfoWindow({
 			content: "<p>" + theirLogin + "</p>" //HAVE TO ALSO INCLUDE DISTANCE
 		});
 
@@ -119,7 +121,7 @@
 		});
 		
 		marker.setMap(map);
-	}
+*/	}
 
 	</script>
 </head>
