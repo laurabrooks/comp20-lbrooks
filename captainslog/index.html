@@ -8,7 +8,7 @@
 	<script>
 	$(document).ready(function(){
 		$("input#msg").change(function(){
-			timeStamp = event.timeStamp;
+			timeStamp = (event.timeStamp/1000);
 			d = new Date(0);
 			d.setUTCSeconds(timeStamp);
 			message = $("input#msg").val();
