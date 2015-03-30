@@ -8,11 +8,15 @@
 	<script>
 	$(document).ready(function(){
 		$("input#msg").change(function(){
-			timeStamp = (event.timeStamp/1000);
+			//code for date conversion found at
+			//http://stackoverflow.com/questions/4631928/convert-utc-epoch-to-local-date-with-javascript 
+			seconds = (event.timeStamp/1000);
 			d = new Date(0);
-			d.setUTCSeconds(timeStamp);
+			d.setUTCSeconds(seconds);
+
+
 			message = $("input#msg").val();
-			$("div#log").prepend("<p>" + " " + d + message + "</p>");
+			$("div#log").prepend("<p>" + " " + d + " --- " + message + "</p>");
 			$("#msg").val("");
 		});
 	});
