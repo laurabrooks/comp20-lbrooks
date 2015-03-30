@@ -19,7 +19,7 @@
 			$("div#log").prepend("<p>" + " " + d + " - " + message + "</p>");
 			$("#msg").val("");
 
-			localStorage.setItem('message', $("div#log").text);
+			localStorage.setItem('message', message.text());
 		});
 	});
 	</script>
