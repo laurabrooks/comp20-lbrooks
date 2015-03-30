@@ -7,9 +7,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 	$(document).ready(function(){
-	//something about .click
-		message = $("input#msg").val();
-		$("div#log").html("<p>Need timestamp and message: </p>" + message);
+		$("input#msg").change(function(){
+			message = $("input#msg").val();
+			$("div#log").prepend("<p>" + message + "</p>");
+		});
 	});
 	</script>
 </head>
