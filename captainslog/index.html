@@ -11,7 +11,7 @@
 			timeStamp = event.timeStamp;
 			d = new Date(timeStamp*1000);
 			message = $("input#msg").val();
-			$("div#log").prepend("<p>" + timeStamp + " " + " " + d + message + "</p>");
+			$("div#log").prepend("<p>" + " " + d + message + "</p>");
 			$("#msg").val("");
 		});
 	});
