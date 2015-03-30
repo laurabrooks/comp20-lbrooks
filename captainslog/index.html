@@ -10,6 +10,7 @@
 		$("input#msg").change(function(){
 			message = $("input#msg").val();
 			$("div#log").prepend("<p>" + message + "</p>");
+			$("#msg").val("");
 		});
 	});
 	</script>
