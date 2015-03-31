@@ -9,7 +9,7 @@
 
 	var numMessages = 0;
 
-	$(document).ready(function(){
+	$(document).ready(function(event){
 		for (key in localStorage) {
 			$("div#log").prepend(localStorage.getItem(key));
 		}
