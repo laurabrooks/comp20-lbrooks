@@ -7,7 +7,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 	$(document).ready(function(){
-		localStorage.getItem("message");
+		oldMessage = localStorage.getItem("message");
+//		$("div#log").prepend = 
 
 		$("input#msg").change(function(){
 			//code for date conversion found at
@@ -16,9 +17,10 @@
 			d = new Date(0);
 			d.setUTCSeconds(seconds);
 
-
 			message = $("input#msg").val();
-			$("div#log").prepend("<p>" + " " + d + " - " + message + "</p>");
+			full = "<p>" + " " + d + " - " + message + "</p>";
+
+			$("div#log").prepend(full);
 			$("#msg").val("");
 
 			localStorage.setItem('message', message);
