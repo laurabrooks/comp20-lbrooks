@@ -23,7 +23,7 @@
 			$("div#log").prepend(full);
 			$("#msg").val("");
 
-			localStorage.setItem(seconds + 'message', message);
+			localStorage.setItem(seconds%10000000000 + 'message', message);
 		});
 	});
 	</script>
