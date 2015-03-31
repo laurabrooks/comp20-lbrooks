@@ -6,10 +6,14 @@
 	<title>Captain's Log</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
-	$(document).ready(function(){
-		oldMessage = localStorage.getItem("message");
-		$("div#log").prepend(oldMessage);
 
+	var numMessages = 0;
+
+	$(document).ready(function(){
+		for (i = 0; i < localStorage.length(); i++) {
+			//oldMessage = localStorage.getItem("message");
+			$("div#log").prepend(localStorage.getItem(localStorage.key(i)));
+		}
 		$("input#msg").change(function(){
 			//code for date conversion found at
 			//http://stackoverflow.com/questions/4631928/convert-utc-epoch-to-local-date-with-javascript 
@@ -23,7 +27,7 @@
 			$("div#log").prepend(full);
 			$("#msg").val("");
 
-			localStorage.setItem(seconds%10000000000 + 'message', message);
+			localStorage.setItem(seconds + 'message', message);
 		});
 	});
 	</script>
