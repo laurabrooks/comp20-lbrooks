@@ -10,9 +10,10 @@
 	var numMessages = 0;
 
 	$(document).ready(function(){
-		for (i = 0; i < localStorage.length(); i++) {
+		for (key in localStorage) {
 			//oldMessage = localStorage.getItem("message");
-			$("div#log").prepend(localStorage.getItem(localStorage.key(i)));
+			$("div#log").prepend(localStorage.getItem(key));
+			console.log("in for loop");
 		}
 		$("input#msg").change(function(){
 			//code for date conversion found at
@@ -27,7 +28,7 @@
 			$("div#log").prepend(full);
 			$("#msg").val("");
 
-			localStorage.setItem(seconds + 'message', message);
+			localStorage.setItem(seconds + 'message', full);
 		});
 	});
 	</script>
