@@ -11,9 +11,7 @@
 
 	$(document).ready(function(){
 		for (key in localStorage) {
-			//oldMessage = localStorage.getItem("message");
 			$("div#log").prepend(localStorage.getItem(key));
-			console.log("in for loop");
 		}
 		$("input#msg").change(function(){
 			//code for date conversion found at
