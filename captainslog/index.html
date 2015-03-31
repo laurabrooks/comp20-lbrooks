@@ -8,7 +8,7 @@
 	<script>
 	$(document).ready(function(){
 		oldMessage = localStorage.getItem("message");
-//		$("div#log").prepend = 
+		$("div#log").prepend(oldMessage);
 
 		$("input#msg").change(function(){
 			//code for date conversion found at
