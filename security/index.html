@@ -14,10 +14,24 @@
 	<h1>Security Report for <a href="http://afternoon-coast-6843.herokuapp.com">afternoon-coast-6843.herokuapp.com</a></h1>
 
 	<h2>Introduction</h2>
+
 	<h2>Methodology</h2>
+		<p>I began using by trying to attack the code from the outside. I used curl initially to check for vulnerabilities to XSS, however Jason was smart enough to escape all user input in order to change special characters to html encoded.</p>
+
 	<h2>Abstract of Findings</h2>
+
 	<h2>Issues Found</h2>
-		<p>Issue, location, severity, description, proof (screenshots), resolution.</p>
+
+		<h3>1. Login linked to identity</h3>
+			<p>Issue: Jason's fictitious login, "LindyContreras", is meant to protect his privacy. However, it is coded into the JavaScript on his mmap page. This page is accessible via the first letter of his first name followed by last name, a formula that anyone can determine just by knowing his name. Therefore anyone can simply type in the correct formula in the URL bar to see Jason's mmap and also reveal his fictititous login, which is clearly no longer protecting his privacy.</p>
+			<p>Location: The login is hard coded into the JavaScript on the html page for Jason's mmap.</p>
+			<p>Severity: Medium. For the purposes of this assignment, no sensitive information is being revealed aside from location. However, it is not good practice to use a login that is meant to keep information private when it can easily be bypassed.</p>
+			<p>Proof: both identifiers are on the page when you see the source code.</p>
+			<img src="issue1.png" alt="jfan's mmap">	
+			<p>Resolution: Somehow the login must not be associated with the URI that includes "jfan". The best way to do this may be to prompt the user to input a username upon accessing the page (of course this data should not be trusted and should be validated).</p>
+		<h3>2. issue2</h3>
+		<h3>3. issue3</h3>
+
 	<h2>Conclusion</h2>
 
 
