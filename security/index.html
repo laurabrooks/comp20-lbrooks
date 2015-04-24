@@ -32,6 +32,7 @@
 			<img src="issue1.png" alt="jfan's mmap">	
 			<p>Resolution: Somehow the login must not be associated with the URI that includes "jfan". The best way to do this may be to prompt the user to input a username upon accessing the page (of course this data should not be trusted and should be validated).</p>
 		<br>
+
 		<h3>2. Input can be infinitely long</h3>
 			<p>Description: Neither the client nor the server checks to see how long user input from the post request is before adding it to the database. It is possible to fill the database with garbage in order to max out the storage allowed on MongoLab before the owner of the app is charged for the amount of data.</p>
 			<p>Location: In the code for the get request, data is not checked for length.</p>
@@ -42,7 +43,13 @@
 			<p>Resolution: Data parsed from the request should be checked for length. Body-parser is included in the file but not actually used to check request data. Body-parser has an automatic limit of 100kb, but can be specified to a different amount better suited to a reasonable length for a login or latitute or longitude with the code: app.use(express.bodyParser({limit: 'X mb'})). (See <a href='https://github.com/strongloop/express/issues/1815'>here</a> and <a href='https://github.com/expressjs/body-parser'>here</a>)</p>
 		<br>
 
-		<h3>3. issue3</h3>
+		<h3>3. Data tampering via proxy</h3>
+			<p>Description: Using a proxy, it is possible (and very easy) to manipulate user input. I can easily change the parameters of the POST request to /sendLocation and change the user's login or location using Burp Suite. I can also change the query in the GET request to /location.json in order to access a different user's location.</p>
+			<p>Location: I used a proxy to tamper with request data for both afternoon-coast-6843.herokuapp.com/location.json and afternoon-coast-6843.herokuapp.com/sendLocation.</p>
+			<p>Severity: Severe. Data can be tampered with by a third party in order to falsify records being put into the API or give access to a document other than the one that the user used a query for.</p>
+			<p>Proof: See how I can simply change the value of a field or even add or modify fields.</p>
+			<img class="image" src="proxy.png" alt="using proxy to tamper with data">
+			<p>Resolution: Proxies can be blocked manually or automatically. Doing so manually would take a lot of work and knowledge of the IP addresses of all proxies, many of which change every day. Blacklists exist to aid in this process, but several software options exist which take care of blocking proxies automatically once implemented. Examples include <a href="https://www.blocked.com/index/php">BlockScript</a> or <a href="http://sourceforge.net/projects/proxyguard/">ProxyGuard</a>. Check out <a href="https://www.whatismyip.com/proxy-detection-and-blocking/">this link</a> for a brief description of ways to block proxies on your website.</p>
 
 	<h2>Conclusion</h2>
 
