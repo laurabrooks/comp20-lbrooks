@@ -13,10 +13,11 @@
 <body>
 	<h1>Security Report for <a href="http://afternoon-coast-6843.herokuapp.com">afternoon-coast-6843.herokuapp.com</a></h1>
 
-	<h2>Introduction</h2>
+<h2>Introduction</h2>
+		<p>I have been hired to review the security and privacy concerns of Jason Fan's Marauder's Map on both the server-side and client-side. Maruader's Map is a product that is attached to a heroku app server where locations can be posted to. The client uses the Google Maps API to put these locations and the associated login into markers on a map.</p>
 
 	<h2>Methodology</h2>
-		<p>I began using by trying to attack the code from the outside. I used curl initially to check for vulnerabilities to XSS, however Jason was smart enough to escape all user input in order to change special characters to html encoded.</p>
+		<p>I began using by trying to attack the code from the outside. I used curl initially to check for vulnerabilities to XSS, however Jason was smart enough to escape all user input in order to change special characters to html encoded. After checking for XSS, I thought about what data I could enter that could possibly crash or overload the app. In combination with looking at the source code, I found that other html encoding and checking to be sure all fields were present, the input was not checked. Therefore, I could potentially overload the serve with tons of input. I also looked at the mmap website to look for breaches of privacy.</p>
 
 	<h2>Abstract of Findings</h2>
 
