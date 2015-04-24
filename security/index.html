@@ -34,11 +34,11 @@
 		<h3>2. Input can be infinitely long</h3>
 			<p>Description: Neither the client nor the server checks to see how long user input from the post request is before adding it to the database. It is possible to fill the database with garbage in order to max out the storage allowed on MongoLab before the owner of the app is charged for the amount of data.</p>
 			<p>Location: In the code for the get request, data is not checked for length.</p>
-			<img src="postreq.png" alt="code for POST request">
+			<img class="image" src="postreq.png" alt="code for POST request">
 			<p>Severity: Mild. Although I used a rudimentary method of copy and pasting a very long string in curl, someone with real malicious intentions could create a script to put huge amounts of data into POST requests and max out the free storage on MongoLab. However inconvenient this may be for Jason (as his credit card information is attached to the app) and whoever tries to find valuable information among these garbage inputs, it will not prevent the app from working.</p>
 			<p>Proof: note the length of the horizontal scroll bar</p>
 			<img src="obnoxious.png" alt="obnoxiously long login displayed">
-			<p>Resolution: Data parsed from the request should be checked for length. Body-parser is included in the file but not actually used to check request data. Body-parser has an automatic limit of 100kb, but can be specified to a different amount better suited to a reasonable length for a login or latitute or longitude with the code: app.use(express.bodyParser({limit: 'X mb'})). (See <a href='https://github.com/strongloop/express/issues/1815'>here</a> and <a href='https://github.com/expressjs/body-parser'>here</a>.</p>
+			<p>Resolution: Data parsed from the request should be checked for length. Body-parser is included in the file but not actually used to check request data. Body-parser has an automatic limit of 100kb, but can be specified to a different amount better suited to a reasonable length for a login or latitute or longitude with the code: app.use(express.bodyParser({limit: 'X mb'})). (See <a href='https://github.com/strongloop/express/issues/1815'>here</a> and <a href='https://github.com/expressjs/body-parser'>here</a>)</p>
 
 
 		<h3>3. issue3</h3>
