@@ -17,20 +17,30 @@
 		<p>I have been hired to review the security and privacy concerns of Jason Fan's Marauder's Map on both the server-side and client-side. Maruader's Map is a product that is attached to a heroku app server where locations can be posted to. The client uses the Google Maps API to put these locations and the associated login into markers on a map.</p>
 
 	<h2>Methodology</h2>
-		<p>I began using by trying to attack the code from the outside. I used curl initially to check for vulnerabilities to XSS, however Jason was smart enough to escape all user input in order to change special characters to html encoded. After checking for XSS, I thought about what data I could enter that could possibly crash or overload the app. In combination with looking at the source code, I found that other html encoding and checking to be sure all fields were present, the input was not checked. Therefore, I could potentially overload the serve with tons of input. I also looked at the mmap website to look for breaches of privacy.</p>
+		<p>I began by trying to attack the code from the outside, using a black-box approach. I used curl initially to check for vulnerabilities to XSS, however Jason was smart enough to escape all user input in order to change special characters to html encoded. After checking for XSS, I thought about what data I could enter that could possibly crash or overload the app. In combination with looking at the source code, I found that other html encoding and checking to be sure all fields were present, the input was not checked. Therefore, I could potentially overload the serve with tons of input. I also looked at the mmap website to look for breaches of privacy.</p>
 
 	<h2>Abstract of Findings</h2>
+		<p>Although many students had issues with XSS, Jason successfully avoided this vulnerability by escaping user input. However, user input is not limited in length and therefore it is possible to fill the database with garbage. Also on the clientside, Jason's fictitious login is easily linked to his identity, therefore not protecting his privacy. TALK ABOUT THIRD ISSUE</p>
 
 	<h2>Issues Found</h2>
 
 		<h3>1. Login linked to identity</h3>
-			<p>Issue: Jason's fictitious login, "LindyContreras", is meant to protect his privacy. However, it is coded into the JavaScript on his mmap page. This page is accessible via the first letter of his first name followed by last name, a formula that anyone can determine just by knowing his name. Therefore anyone can simply type in the correct formula in the URL bar to see Jason's mmap and also reveal his fictititous login, which is clearly no longer protecting his privacy.</p>
+			<p>Description: Jason's fictitious login, "LindyContreras", is meant to protect his privacy. However, it is coded into the JavaScript on his mmap page. This page is accessible via the first letter of his first name followed by last name, a formula that anyone can determine just by knowing his name. Therefore anyone can simply type in the correct formula in the URL bar to see Jason's mmap and also reveal his fictititous login, which is clearly no longer protecting his privacy.</p>
 			<p>Location: The login is hard coded into the JavaScript on the html page for Jason's mmap.</p>
 			<p>Severity: Medium. For the purposes of this assignment, no sensitive information is being revealed aside from location. However, it is not good practice to use a login that is meant to keep information private when it can easily be bypassed.</p>
 			<p>Proof: both identifiers are on the page when you see the source code.</p>
 			<img src="issue1.png" alt="jfan's mmap">	
 			<p>Resolution: Somehow the login must not be associated with the URI that includes "jfan". The best way to do this may be to prompt the user to input a username upon accessing the page (of course this data should not be trusted and should be validated).</p>
-		<h3>2. issue2</h3>
+		<h3>2. Input can be infinitely long</h3>
+			<p>Description: Neither the client nor the server checks to see how long user input from the post request is before adding it to the database. It is possible to fill the database with garbage in order to max out the storage allowed on MongoLab before the owner of the app is charged for the amount of data.</p>
+			<p>Location: In the code for the get request, data is not checked for length.</p>
+			<img src="postreq.png" alt="code for POST request">
+			<p>Severity: Mild. Although I used a rudimentary method of copy and pasting a very long string in curl, someone with real malicious intentions could create a script to put huge amounts of data into POST requests and max out the free storage on MongoLab. However inconvenient this may be for Jason (as his credit card information is attached to the app) and whoever tries to find valuable information among these garbage inputs, it will not prevent the app from working.</p>
+			<p>Proof: note the length of the horizontal scroll bar</p>
+			<img src="obnoxious.png" alt="obnoxiously long login displayed">
+			<p>Resolution: Data parsed from the request should be checked for length. Body-parser is included in the file but not actually used to check request data. Body-parser has an automatic limit of 100kb, but can be specified to a different amount better suited to a reasonable length for a login or latitute or longitude with the code: app.use(express.bodyParser({limit: 'X mb'})). (See <a href='https://github.com/strongloop/express/issues/1815'>here</a> and <a href='https://github.com/expressjs/body-parser'>here</a>.</p>
+
+
 		<h3>3. issue3</h3>
 
 	<h2>Conclusion</h2>
